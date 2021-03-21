@@ -6,15 +6,24 @@ char toggle_red()		/* always toggle! */
 {
   static char state = 0;
 
-  switch (state) {
+  switch (state) {  /*everytime we come back to red's state, it blinks one more time than last time and it will alternate back to green to blink once*/
   case 0:
     red_on = 1;
     state = 1;
     break;
   case 1:
-    red_on = 0;
-    state = 0;
+    red_on = 1;
+    state = 2;
     break;
+  case 2:
+    red_on = 1;
+    state = 3;
+  case 3:
+    red_on = 1;
+    state_on = 4;
+  case 4:
+    red_on = 0;
+    state_on = 0;
   }
   return 1;			/* always changes an led */
 }
