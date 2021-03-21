@@ -18,17 +18,20 @@ char toggle_red()		/* always toggle! */
   case 2:
     red_on = 1;
     state = 3;
+    break;
   case 3:
     red_on = 1;
-    state_on = 4;
+    state = 4;
+    break;
   case 4:
     red_on = 0;
-    state_on = 0;
+    state = 0;
+    break;
   }
   return 1;			/* always changes an led */
 }
 
-char toggle_green()	/* only toggle green if red is on!  */
+char toggle_green()  /* only toggle green if red is off  */
 {
   char changed = 0;
   if (red_on) {
